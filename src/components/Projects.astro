@@ -1,0 +1,104 @@
+---
+const projects = [
+  {
+    name: "mickdlc.com",
+    tagline: "This site, as it ships.",
+    description:
+      "Astro 5 static site, source on GitHub, auto-deployed via Cloudflare Workers Static Assets on every push to main. Custom domain and email routing handled in Cloudflare. Build is reproducible from a clean clone in under 90 seconds.",
+    tech: ["Astro", "Cloudflare", "GitHub Actions", "DNS"],
+    href: "https://github.com/MickDLC/mickdlc.com",
+    cta: "View source",
+  },
+  // Add more entries below as you build them.
+  // {
+  //   name: "Project name",
+  //   tagline: "One-line summary.",
+  //   description: "What it is, the problem it solves, and what you did.",
+  //   tech: ["Ansible", "AWS", "Linux"],
+  //   href: "https://github.com/MickDLC/...",
+  //   cta: "View source",
+  // },
+];
+---
+
+<section id="projects">
+  <div class="container">
+    <span class="section-label">projects</span>
+    <h2>Things I've built</h2>
+    <p class="muted intro">
+      Personal infrastructure and tooling I've shipped end-to-end. More repos at
+      <a href="https://github.com/MickDLC" rel="noopener noreferrer" target="_blank">github.com/MickDLC</a>.
+    </p>
+    <div class="project-grid">
+      {
+        projects.map((p) => (
+          <article class="card project">
+            <header>
+              <h3>{p.name}</h3>
+              <p class="tagline mono muted">{p.tagline}</p>
+            </header>
+            <p>{p.description}</p>
+            <div class="tags">
+              {p.tech.map((t) => (
+                <span class="tag">{t}</span>
+              ))}
+            </div>
+            <a class="link mono" href={p.href} rel="noopener noreferrer" target="_blank">
+              {p.cta} <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .intro {
+    margin-top: 0;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .project {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .project h3 {
+    margin: 0;
+  }
+
+  .tagline {
+    margin: 0.15rem 0 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .project p {
+    margin: 0;
+    color: var(--text-muted);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .link {
+    margin-top: 0.5rem;
+    color: var(--accent);
+    font-size: 0.9rem;
+    align-self: flex-start;
+  }
+
+  .link:hover {
+    color: var(--accent-strong);
+  }
+</style>
