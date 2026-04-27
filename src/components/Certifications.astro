@@ -1,0 +1,69 @@
+---
+const certs = [
+  {
+    name: "Advanced Prompt Engineering",
+    issuer: "Vanderbilt University",
+    date: "Oct 2025",
+  },
+  {
+    name: "Google IT Support Professional",
+    issuer: "Google",
+    date: "Jan 2025",
+  },
+  {
+    name: "Linux Commands and Shell Scripting",
+    issuer: "edX (verified)",
+    date: "Sep 2024",
+  },
+  {
+    name: "AWS Certified Cloud Practitioner (CLF-C02)",
+    issuer: "Amazon Web Services",
+    date: "Jun 2024",
+  },
+  {
+    name: "B.S. Biology",
+    issuer: "Texas State University, San Marcos, TX",
+    date: "Dec 2020",
+    education: true,
+  },
+];
+---
+
+<section id="certifications">
+  <div class="container">
+    <span class="section-label">credentials</span>
+    <h2>Certifications & Education</h2>
+    <div class="cert-grid">
+      {
+        certs.map((c) => (
+          <div class="card cert">
+            <h3>{c.name}</h3>
+            <p class="mono muted">
+              {c.issuer} · {c.date}
+            </p>
+            {c.education && <span class="tag">Education</span>}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .cert h3 {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .cert p {
+    margin: 0 0 0.5rem;
+    font-size: 0.85rem;
+  }
+</style>
